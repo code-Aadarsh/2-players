@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dh528bgbydsqc"]
+
+[ext_resource type="PackedScene" uid="uid://28lro2royw61" path="res://player_1.tscn" id="1_4y0t7"]
+[ext_resource type="PackedScene" uid="uid://pegaeg5tu8q4" path="res://player_2.tscn" id="2_fxwnf"]
+[ext_resource type="PackedScene" uid="uid://bmskd5utd0hhu" path="res://bullet.tscn" id="2_vsh2u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62550"]
+size = Vector2(132, 13)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hy033"]
+
+[node name="battlefield" type="Node2D" unique_id=183101427]
+
+[node name="ground" type="StaticBody2D" parent="." unique_id=71154786]
+scale = Vector2(7.348431, 8.17025)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1863659411]
+position = Vector2(0, 6.4999986)
+scale = Vector2(0.99999994, 0.9999997)
+shape = SubResource("RectangleShape2D_62550")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground" unique_id=242899576]
+modulate = Color(0.32278085, 0.5662747, 0, 1)
+position = Vector2(3.8146973e-06, 6.5)
+scale = Vector2(132, 13)
+texture = SubResource("CanvasTexture_hy033")
+
+[node name="Player-1" parent="." unique_id=1169377623 instance=ExtResource("1_4y0t7")]
+position = Vector2(294, -83)
+scale = Vector2(0.43315017, 0.41219702)
+BulletScene = ExtResource("2_vsh2u")
+
+[node name="Player-2" parent="." unique_id=652108409 instance=ExtResource("2_fxwnf")]
+position = Vector2(-310, -84)
+scale = Vector2(0.43315017, 0.41219702)
+DashSpeed = 12.0
+BulletScene = ExtResource("2_vsh2u")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=124173984]

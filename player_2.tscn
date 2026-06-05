@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://pegaeg5tu8q4"]
+
+[ext_resource type="Script" uid="uid://d4agwb1lvcx27" path="res://Player2.cs" id="1_8xjnt"]
+[ext_resource type="Texture2D" uid="uid://drh3e02xeith4" path="res://icon.svg" id="1_wkcja"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxx23"]
+radius = 63.0
+height = 128.0
+
+[node name="Player-2" type="CharacterBody2D" unique_id=1169377623]
+script = ExtResource("1_8xjnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=884456661]
+shape = SubResource("CapsuleShape2D_bxx23")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=366002835]
+modulate = Color(0.7785996, 0.2851813, 0.44345033, 1)
+texture = ExtResource("1_wkcja")
+
+[node name="GunPoint" type="Marker2D" parent="." unique_id=1585942579]
+position = Vector2(50, 0)

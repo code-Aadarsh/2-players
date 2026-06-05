@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bmskd5utd0hhu"]
+
+[ext_resource type="Script" uid="uid://bf0wuv071ta78" path="res://Bullet.cs" id="1_v7oki"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v8qja"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4vbm"]
+radius = 1.0
+height = 4.0
+
+[node name="bullet" type="RigidBody2D" unique_id=977405484]
+gravity_scale = 0.0
+script = ExtResource("1_v7oki")
+speed = 1500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1225599302]
+position = Vector2(2.9802322e-08, 0)
+scale = Vector2(4, 2)
+texture = SubResource("CanvasTexture_v8qja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1920288291]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_t4vbm")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
