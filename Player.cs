@@ -3,19 +3,20 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
-    [Export] private float speed = 500f;
-    private float dashTimer = 0f;
-    [Export] private float DashDuration = 0.3f;
-    [Export] private float DashSpeed = 1000f;
-    [Export] private float jumpForce = -600f;
-    private float cooldownTimer = 0f;
-    [Export] private float cooldownDuration = 2f;
+    [Export] protected float speed = 500f;
+    protected float dashTimer = 0f;
+    [Export] protected float DashDuration = 0.3f;
+    [Export] protected float DashSpeed = 1200f;
+    [Export] protected float jumpForce = -600f;
+    protected float cooldownTimer = 0f;
+    [Export] protected float cooldownDuration = 2f;
 
     [Export] public PackedScene BulletScene;
-    private Marker2D gunPoint;
-    private float facing = 1f;
+    protected Marker2D gunPoint;
+    protected float facing = 1f;
     protected Vector2 velocity;
     protected float direction;
+    protected float dashDirection;
     public override void _Ready()
     {
         gunPoint = GetNode<Marker2D>("GunPoint");
@@ -41,6 +42,7 @@ public partial class Player : CharacterBody2D
         {
             cooldownTimer = cooldownDuration;
             dashTimer = DashDuration;
+
         }
         if (cooldownTimer > 0)
         {
@@ -50,6 +52,7 @@ public partial class Player : CharacterBody2D
         {
             dashTimer -= (float)delta;
             velocity.X = direction * DashSpeed;
+
 
         }
         else if (direction != 0)
@@ -65,7 +68,7 @@ public partial class Player : CharacterBody2D
             {
                 GetNode<Sprite2D>("Sprite2D").FlipH = true;
                 facing = -1;
-                gunPoint.Position = new Vector2(-50, 0);
+                gunPoint.Position = new Vector2(-335, 0);
 
             }
         }

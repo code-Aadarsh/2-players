@@ -1,22 +1,25 @@
 [gd_scene format=3 uid="uid://28lro2royw61"]
 
 [ext_resource type="Script" uid="uid://c8llt7g8ycdr6" path="res://Player1.cs" id="1_bxx23"]
-[ext_resource type="Texture2D" uid="uid://drh3e02xeith4" path="res://icon.svg" id="1_squ5q"]
+[ext_resource type="Texture2D" uid="uid://deqcnf6w8e587" path="res://player1.png" id="2_bxx23"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxx23"]
-radius = 63.0
-height = 128.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxx23"]
+size = Vector2(385, 741)
 
 [node name="Player-1" type="CharacterBody2D" unique_id=1169377623]
 script = ExtResource("1_bxx23")
 DashSpeed = 1200.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=884456661]
-shape = SubResource("CapsuleShape2D_bxx23")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=366002835]
 modulate = Color(0.7438971, 0.44315687, 0.9881957, 1)
-texture = ExtResource("1_squ5q")
+position = Vector2(-142, 144)
+scale = Vector2(-1, 1)
+texture = ExtResource("2_bxx23")
 
 [node name="GunPoint" type="Marker2D" parent="." unique_id=229984826]
 position = Vector2(50, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=348609725]
+position = Vector2(-142.5, 128.5)
+scale = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_bxx23")

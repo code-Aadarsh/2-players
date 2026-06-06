@@ -12,11 +12,11 @@ size = Vector2(132, 13)
 [node name="battlefield" type="Node2D" unique_id=183101427]
 
 [node name="ground" type="StaticBody2D" parent="." unique_id=71154786]
-scale = Vector2(7.348431, 8.17025)
+scale = Vector2(7.5101485, 12.7985325)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=1863659411]
 position = Vector2(0, 6.4999986)
-scale = Vector2(0.99999994, 0.9999997)
+scale = Vector2(0.99999994, 0.99999964)
 shape = SubResource("RectangleShape2D_62550")
 
 [node name="Sprite2D" type="Sprite2D" parent="ground" unique_id=242899576]
@@ -26,14 +26,15 @@ scale = Vector2(132, 13)
 texture = SubResource("CanvasTexture_hy033")
 
 [node name="Player-1" parent="." unique_id=1169377623 instance=ExtResource("1_4y0t7")]
-position = Vector2(294, -83)
-scale = Vector2(0.43315017, 0.41219702)
+position = Vector2(328.00003, -161.00003)
+scale = Vector2(0.12, 0.115)
 BulletScene = ExtResource("2_vsh2u")
 
 [node name="Player-2" parent="." unique_id=652108409 instance=ExtResource("2_fxwnf")]
-position = Vector2(-310, -84)
-scale = Vector2(0.43315017, 0.41219702)
-DashSpeed = 12.0
+position = Vector2(-326, -166.00005)
+scale = Vector2(0.12, 0.115)
+DashSpeed = 1200.0
 BulletScene = ExtResource("2_vsh2u")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=124173984]
+scale = Vector2(1.0209963, 1.0362731)

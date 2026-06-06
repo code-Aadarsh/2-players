@@ -10,6 +10,8 @@ public partial class Player2 : Player
 		HandleGravity(ref delta);
 		HandleShoot("p2_shoot");
 		Movement(ref delta, "crouch2", "dash2", "jump");
+		Restart();
+
 
 
 
@@ -19,6 +21,5 @@ public partial class Player2 : Player
 
 
 	}
-
 }
 

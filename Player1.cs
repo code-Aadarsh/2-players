@@ -9,7 +9,9 @@ public partial class Player1 : Player
 
         HandleGravity(ref delta);
         HandleShoot("p1_shoot");
-        Movement(ref delta, "crouch", "dash", "ui_jump");
+        Movement(ref delta, "crouch", "dash", "ui_accept");
+        Restart();
+
 
 
         Velocity = velocity;
