@@ -1,9 +1,12 @@
 using Godot;
+using GodotPlugins.Game;
 
 
 public partial class Player : CharacterBody2D
 {
-    [Export] protected float speed = 400f;
+    [Export] protected float speed = 500f;
+    protected float MainSpeed;
+    protected float crouchspeed = 100f;
     protected float dashTimer = 0f;
     [Export] protected float DashDuration = 0.3f;
     [Export] protected float DashSpeed = 1200f;
@@ -18,6 +21,7 @@ public partial class Player : CharacterBody2D
     protected float direction;
     protected float dashDirection;
     protected float Standing;
+
     public override void _Ready()
     {
         gunPoint = GetNode<Marker2D>("GunPoint");
@@ -31,14 +35,16 @@ public partial class Player : CharacterBody2D
     }
     protected void Movement(ref double delta, string crouch, string dash, string jump, bool booright, bool booleft, float Gright, float Gleft)
     {
+
         if (Input.IsActionPressed(crouch))
         {
-            speed = 100f;
+            MainSpeed = crouchspeed;
         }
         else
         {
-            speed = speed;
+            MainSpeed = speed;
         }
+
         if (Input.IsActionJustPressed(dash) && dashTimer <= 0 && cooldownTimer <= 0)
         {
             cooldownTimer = cooldownDuration;
@@ -63,14 +69,14 @@ public partial class Player : CharacterBody2D
                 GetNode<Sprite2D>("Sprite2D").FlipH = booright;
                 facing = 1;
                 gunPoint.Position = new Vector2(Gright, 0);
-                velocity.X = direction * speed;
+                velocity.X = direction * MainSpeed;
             }
             else
             {
                 GetNode<Sprite2D>("Sprite2D").FlipH = booleft;
                 facing = -1;
                 gunPoint.Position = new Vector2(Gleft, 0);
-                velocity.X = direction * speed;
+                velocity.X = direction * MainSpeed;
             }
         }
 
