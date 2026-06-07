@@ -5,6 +5,7 @@ public partial class Player1 : Player
 
     public override void _PhysicsProcess(double delta)
     {
+        //changes
         velocity = Velocity;
         direction = Input.GetAxis("ui_left", "ui_right");
 
