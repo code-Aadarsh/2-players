@@ -28,13 +28,11 @@ shape = SubResource("RectangleShape2D_62550")
 [node name="Player-1" parent="." unique_id=1169377623 instance=ExtResource("1_4y0t7")]
 position = Vector2(-260.9999, -167)
 scale = Vector2(0.12, 0.115)
-speed = 500.0
 BulletScene = ExtResource("2_vsh2u")
 
 [node name="Player-2" parent="." unique_id=652108409 instance=ExtResource("2_fxwnf")]
 position = Vector2(371.99994, -162)
 scale = Vector2(-0.12, 0.115)
-speed = 500.0
 BulletScene = ExtResource("2_vsh2u")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=124173984]

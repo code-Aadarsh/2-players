@@ -21,10 +21,20 @@ public partial class Player : CharacterBody2D
     protected float direction;
     protected float dashDirection;
     protected float Standing;
-
+    protected float falling = 500f;
+    protected int idle = 0;
+    protected Sprite2D sprite;
+    protected string crouch;
+    protected string dash;
+    protected string jump;
+    protected bool booright;
+    protected bool booleft;
+    protected float Gright;
+    protected float Gleft;
     public override void _Ready()
     {
         gunPoint = GetNode<Marker2D>("GunPoint");
+        sprite = GetNode<Sprite2D>("Sprite2D");
     }
     protected void HandleGravity(ref double delta)
     {
@@ -33,7 +43,7 @@ public partial class Player : CharacterBody2D
             velocity += GetGravity() * (float)delta;
         }
     }
-    protected void Movement(ref double delta, string crouch, string dash, string jump, bool booright, bool booleft, float Gright, float Gleft)
+    protected void Movement(ref double delta)
     {
 
         if (Input.IsActionPressed(crouch))
@@ -66,14 +76,14 @@ public partial class Player : CharacterBody2D
         {
             if (direction > 0)
             {
-                GetNode<Sprite2D>("Sprite2D").FlipH = booright;
+                sprite.FlipH = booright;
                 facing = 1;
                 gunPoint.Position = new Vector2(Gright, 0);
                 velocity.X = direction * MainSpeed;
             }
             else
             {
-                GetNode<Sprite2D>("Sprite2D").FlipH = booleft;
+                sprite.FlipH = booleft;
                 facing = -1;
                 gunPoint.Position = new Vector2(Gleft, 0);
                 velocity.X = direction * MainSpeed;
@@ -82,7 +92,7 @@ public partial class Player : CharacterBody2D
 
         else
         {
-            velocity.X = 0;
+            velocity.X = idle;
         }
 
 
@@ -105,7 +115,7 @@ public partial class Player : CharacterBody2D
     }
     protected void Restart()
     {
-        if (GlobalPosition.Y > 500f)
+        if (GlobalPosition.Y > falling)
         {
             GetTree().ReloadCurrentScene();
         }
