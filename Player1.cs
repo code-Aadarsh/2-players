@@ -2,6 +2,7 @@ using Godot;
 
 public partial class Player1 : Player
 {
+
     public override void _PhysicsProcess(double delta)
     {
         velocity = Velocity;
@@ -9,7 +10,7 @@ public partial class Player1 : Player
 
         HandleGravity(ref delta);
         HandleShoot("p1_shoot");
-        Movement(ref delta, "crouch", "dash", "ui_accept");
+        Movement(ref delta, "crouch", "dash", "ui_accept", false, true, 50, -335);
         Restart();
 
 

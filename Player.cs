@@ -3,7 +3,7 @@ using Godot;
 
 public partial class Player : CharacterBody2D
 {
-    [Export] protected float speed = 500f;
+    [Export] protected float speed = 400f;
     protected float dashTimer = 0f;
     [Export] protected float DashDuration = 0.3f;
     [Export] protected float DashSpeed = 1200f;
@@ -17,6 +17,7 @@ public partial class Player : CharacterBody2D
     protected Vector2 velocity;
     protected float direction;
     protected float dashDirection;
+    protected float Standing;
     public override void _Ready()
     {
         gunPoint = GetNode<Marker2D>("GunPoint");
@@ -28,7 +29,7 @@ public partial class Player : CharacterBody2D
             velocity += GetGravity() * (float)delta;
         }
     }
-    protected void Movement(ref double delta, string crouch, string dash, string jump)
+    protected void Movement(ref double delta, string crouch, string dash, string jump, bool booright, bool booleft, float Gright, float Gleft)
     {
         if (Input.IsActionPressed(crouch))
         {
@@ -36,7 +37,7 @@ public partial class Player : CharacterBody2D
         }
         else
         {
-            speed = 500f;
+            speed = speed;
         }
         if (Input.IsActionJustPressed(dash) && dashTimer <= 0 && cooldownTimer <= 0)
         {
@@ -57,21 +58,22 @@ public partial class Player : CharacterBody2D
         }
         else if (direction != 0)
         {
-            velocity.X = direction * speed;
             if (direction > 0)
             {
-                GetNode<Sprite2D>("Sprite2D").FlipH = false;
+                GetNode<Sprite2D>("Sprite2D").FlipH = booright;
                 facing = 1;
-                gunPoint.Position = new Vector2(50, 0);
+                gunPoint.Position = new Vector2(Gright, 0);
+                velocity.X = direction * speed;
             }
             else
             {
-                GetNode<Sprite2D>("Sprite2D").FlipH = true;
+                GetNode<Sprite2D>("Sprite2D").FlipH = booleft;
                 facing = -1;
-                gunPoint.Position = new Vector2(-335, 0);
-
+                gunPoint.Position = new Vector2(Gleft, 0);
+                velocity.X = direction * speed;
             }
         }
+
         else
         {
             velocity.X = 0;
